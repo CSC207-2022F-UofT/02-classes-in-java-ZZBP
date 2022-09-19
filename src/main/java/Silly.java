@@ -79,7 +79,9 @@ public class Silly implements Comparable<Silly>{
      *       strings (e.g. this.name = [first string] + [second string]).
      *       Make sure you document this method!
      */
-
+    public Silly(String s1, String s2) {
+        this.name = s1 + s2;
+    }
 
 
 
@@ -112,11 +114,11 @@ public class Silly implements Comparable<Silly>{
          *                Fill out the expected_values array with the
          *                values that countStatic will return at each call.
          */
-        x.countStatic();
-        y.countStatic();
-        x.countStatic();
-        x.countStatic();
-        int[] expected_values = {};
+        int v1 = x.countStatic();
+        int v2 = y.countStatic();
+        int v3 = x.countStatic();
+        int v4 = x.countStatic();
+        int[] expected_values = {v1, v2, v3, v4};
 
         System.out.println("The countStatic calls will return " + Arrays.toString(expected_values));
     }
@@ -134,6 +136,8 @@ public class Silly implements Comparable<Silly>{
     @Override
     public String toString(){
         // TODO (Task 3): Implement the body of this method!
+        return new String(this.name);
+
     }
 
     /**
@@ -153,7 +157,7 @@ public class Silly implements Comparable<Silly>{
          *                We've started it by checking the type of o for you.
          *                You just need to return true if the names are equal.
          */
-        if (!(o instanceof Silly)){
+        if (!(o instanceof Silly)) {
             return false;
         }
 
@@ -161,6 +165,10 @@ public class Silly implements Comparable<Silly>{
 
         // Hint: to compare strings, we need to use .equals()
         //       e.g. s1.equals(s2)
+        if (this.name != other.name) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -194,7 +202,15 @@ public class Silly implements Comparable<Silly>{
          *                You can get the length of a string by using the
          *                .length() method.
          */
-    }
+        if (this.name.length() > other.name.length()) {
+            return 1;
+        } else if (this.name.length() < other.name.length()) {
+            return -1;
+        } else {
+            return 0;
+        }
+
+    }}
 
     /*
      * TODO (Task 6): Submit the changes you made on GitHub!
@@ -205,5 +221,4 @@ public class Silly implements Comparable<Silly>{
      *                If the tests don't pass, look at the results and revise
      *                accordingly.
      */
-}
 
